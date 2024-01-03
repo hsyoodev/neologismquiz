@@ -1,6 +1,9 @@
 package com.example.neologismquiz;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -30,8 +33,10 @@ public class QuizActivity extends AppCompatActivity {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 if (item.getItemId() == R.id.close) {
-//                    intent = new Intent(QuizActivity.this, StageActivity.class);
-//                    startActivity(intent);
+                    Dialog dialog = new Dialog(QuizActivity.this);
+                    dialog.setContentView(R.layout.dialog);
+                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    dialog.show();
                 }
                 return false;
             }
