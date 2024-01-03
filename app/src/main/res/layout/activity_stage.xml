@@ -8,57 +8,197 @@
         android:id="@+id/toolbar"
         layout="@layout/toolbar" />
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_weight="1"
-        android:padding="40dp"
         android:gravity="center"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/back_line1"
+        <LinearLayout
+            android:layout_weight="1"
             android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:background="#2962FF" />
+            android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/back_line2"
-            android:layout_below="@id/back_line1"
-            android:layout_alignRight="@id/back_line1"
-            android:layout_width="10dp"
-            android:layout_height="150dp"
-            android:background="#2962FF" />
+            <LinearLayout
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/back_line3"
-            android:layout_below="@id/back_line2"
+                <Button
+                    android:id="@+id/stage1"
+                    android:backgroundTint="#4FC3F7"
+                    android:text="Stage\n1"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/stage2"
+                    android:backgroundTint="#4FC3F7"
+                    android:text="Stage\n2"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/stage3"
+                    android:backgroundTint="#03A9F4"
+                    android:text="Stage\n3"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_weight="1"
             android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:background="#2962FF" />
+            android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/back_line4"
-            android:layout_below="@id/back_line3"
-            android:layout_alignLeft="@id/back_line3"
-            android:layout_width="10dp"
-            android:layout_height="150dp"
-            android:background="#2962FF" />
+            <LinearLayout
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/back_line5"
-            android:layout_below="@id/back_line4"
+                <Button
+                    android:id="@+id/stage4"
+                    android:backgroundTint="#039BE5"
+                    android:text="Stage\n4"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/stage5"
+                    android:backgroundTint="#0288D1"
+                    android:text="Stage\n5"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/stage6"
+                    android:backgroundTint="#0277BD"
+                    android:text="Stage\n6"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_weight="1"
             android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:background="#2962FF" />
+            android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/back_line6"
-            android:layout_below="@id/back_line5"
-            android:layout_alignRight="@id/back_line5"
-            android:layout_width="10dp"
-            android:layout_height="150dp"
-            android:background="#2962FF" />
-    </RelativeLayout>
+            <LinearLayout
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/stage7"
+                    android:backgroundTint="#01579B"
+                    android:text="Stage\n7"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/stage8"
+                    android:backgroundTint="#E53935"
+                    android:text="Stage\n8"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/stage9"
+                    android:backgroundTint="#D32F2F"
+                    android:text="Stage\n9"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/stage10"
+                    android:backgroundTint="#C62828"
+                    android:text="Stage\n10"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
 
     <include layout="@layout/bottom_navigation_view" />
 </LinearLayout>
