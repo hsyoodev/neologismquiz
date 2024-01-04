@@ -18,5 +18,5 @@
             android:text="게임시작" />
     </LinearLayout>
 
-    <include layout="@layout/bottom_navigation_view" />
+    <include layout="@layout/bottomappbar" />
 </LinearLayout>
