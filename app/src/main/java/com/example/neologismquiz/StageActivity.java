@@ -10,6 +10,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -17,17 +18,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StageActivity extends AppCompatActivity {
-    Button stage1, stage2, stage3, stage4, stage5, stage6, stage7, stage8, stage9, stage10;
-    List<Button> stages = new ArrayList<>();
-    SharedPreferences sharedPreferences;
-    Intent intent;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stage);
 
-        // toolbar
+        // 커스텀 툴바
         Toolbar toolbar = findViewById(R.id.toolbar);
         TextView title = toolbar.findViewById(R.id.title);
 
@@ -45,6 +43,7 @@ public class StageActivity extends AppCompatActivity {
         });
 
         // stage
+        Button stage1, stage2, stage3, stage4, stage5, stage6, stage7, stage8, stage9, stage10;
         stage1 = findViewById(R.id.stage1);
         stage2 = findViewById(R.id.stage2);
         stage3 = findViewById(R.id.stage3);
@@ -56,6 +55,7 @@ public class StageActivity extends AppCompatActivity {
         stage9 = findViewById(R.id.stage9);
         stage10 = findViewById(R.id.stage10);
 
+        List<Button> stages = new ArrayList<>();
         stages.add(stage1);
         stages.add(stage2);
         stages.add(stage3);
@@ -81,7 +81,7 @@ public class StageActivity extends AppCompatActivity {
         }
 
         // 현재 스테이지
-        sharedPreferences = getSharedPreferences("data", MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences("data", MODE_PRIVATE);
         int stageNumber = sharedPreferences.getInt("stageNumber", 1);
         Animation scaleAnimation = AnimationUtils.loadAnimation(StageActivity.this, R.anim.scale);
         Button currentStage = stages.get(stageNumber - 1);
@@ -93,5 +93,15 @@ public class StageActivity extends AppCompatActivity {
             stage.setClickable(false);
             stage.setAlpha(0.5f);
         }
+
+        // 뒤로가기
+        OnBackPressedCallback onBackPressedCallback = new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                intent = new Intent(StageActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        };
+        getOnBackPressedDispatcher().addCallback(onBackPressedCallback);
     }
 }
