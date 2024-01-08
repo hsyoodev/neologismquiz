@@ -117,8 +117,6 @@ public class QuizActivity extends AppCompatActivity {
 
     private void startQuizAnimation() {
         Animation quizTextScaleAnimation = AnimationUtils.loadAnimation(QuizActivity.this, R.anim.quiz_text_scale);
-        roundText.startAnimation(quizTextScaleAnimation);
-        questionText.startAnimation(quizTextScaleAnimation);
         answerText.startAnimation(quizTextScaleAnimation);
     }
 
