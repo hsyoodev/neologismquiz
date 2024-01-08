@@ -27,7 +27,7 @@
                 android:layout_height="match_parent">
 
                 <Button
-                    android:id="@+id/stage1"
+                    android:id="@+id/stageButton1"
                     android:backgroundTint="#4FC3F7"
                     android:text="Stage\n1"
                     android:textStyle="bold"
@@ -43,7 +43,7 @@
                 android:layout_height="match_parent">
 
                 <Button
-                    android:id="@+id/stage2"
+                    android:id="@+id/stageButton2"
                     android:backgroundTint="#4FC3F7"
                     android:text="Stage\n2"
                     android:textStyle="bold"
@@ -59,7 +59,7 @@
                 android:layout_height="match_parent">
 
                 <Button
-                    android:id="@+id/stage3"
+                    android:id="@+id/stageButton3"
                     android:backgroundTint="#03A9F4"
                     android:text="Stage\n3"
                     android:textStyle="bold"
@@ -81,7 +81,7 @@
                 android:layout_height="match_parent">
 
                 <Button
-                    android:id="@+id/stage4"
+                    android:id="@+id/stageButton4"
                     android:backgroundTint="#039BE5"
                     android:text="Stage\n4"
                     android:textStyle="bold"
@@ -97,7 +97,7 @@
                 android:layout_height="match_parent">
 
                 <Button
-                    android:id="@+id/stage5"
+                    android:id="@+id/stageButton5"
                     android:backgroundTint="#0288D1"
                     android:text="Stage\n5"
                     android:textStyle="bold"
@@ -113,7 +113,7 @@
                 android:layout_height="match_parent">
 
                 <Button
-                    android:id="@+id/stage6"
+                    android:id="@+id/stageButton6"
                     android:backgroundTint="#0277BD"
                     android:text="Stage\n6"
                     android:textStyle="bold"
@@ -135,7 +135,7 @@
                 android:layout_height="match_parent">
 
                 <Button
-                    android:id="@+id/stage7"
+                    android:id="@+id/stageButton7"
                     android:backgroundTint="#01579B"
                     android:text="Stage\n7"
                     android:textStyle="bold"
@@ -151,7 +151,7 @@
                 android:layout_height="match_parent">
 
                 <Button
-                    android:id="@+id/stage8"
+                    android:id="@+id/stageButton8"
                     android:backgroundTint="#E53935"
                     android:text="Stage\n8"
                     android:textStyle="bold"
@@ -167,7 +167,7 @@
                 android:layout_height="match_parent">
 
                 <Button
-                    android:id="@+id/stage9"
+                    android:id="@+id/stageButton9"
                     android:backgroundTint="#D32F2F"
                     android:text="Stage\n9"
                     android:textStyle="bold"
@@ -189,7 +189,7 @@
                 android:layout_height="match_parent">
 
                 <Button
-                    android:id="@+id/stage10"
+                    android:id="@+id/stageButton10"
                     android:backgroundTint="#C62828"
                     android:text="Stage\n10"
                     android:textStyle="bold"

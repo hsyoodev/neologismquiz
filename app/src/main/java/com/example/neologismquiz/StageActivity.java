@@ -3,14 +3,12 @@ package com.example.neologismquiz;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -18,7 +16,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StageActivity extends AppCompatActivity {
-    private Intent intent;
+    private Button stageButton1, stageButton2, stageButton3, stageButton4, stageButton5, stageButton6, stageButton7, stageButton8, stageButton9, stageButton10;
+    private List<Button> stageButtons;
+    private SharedPreferences sharedPreferences;
+    private int stageNumber;
+    private Animation scaleAnimation;
+    private Button currentStageButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,82 +29,86 @@ public class StageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_stage);
 
         // 커스텀 툴바
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        TextView title = toolbar.findViewById(R.id.title);
+        createToolbar();
 
-        title.setText("스테이지");
-        toolbar.inflateMenu(R.menu.menu);
-        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                if (item.getItemId() == R.id.close) {
-                    intent = new Intent(StageActivity.this, MainActivity.class);
-                    startActivity(intent);
-                }
-                return false;
-            }
-        });
+        stageButton1 = findViewById(R.id.stageButton1);
+        stageButton2 = findViewById(R.id.stageButton2);
+        stageButton3 = findViewById(R.id.stageButton3);
+        stageButton4 = findViewById(R.id.stageButton4);
+        stageButton5 = findViewById(R.id.stageButton5);
+        stageButton6 = findViewById(R.id.stageButton6);
+        stageButton7 = findViewById(R.id.stageButton7);
+        stageButton8 = findViewById(R.id.stageButton8);
+        stageButton9 = findViewById(R.id.stageButton9);
+        stageButton10 = findViewById(R.id.stageButton10);
 
-        // stage
-        Button stage1, stage2, stage3, stage4, stage5, stage6, stage7, stage8, stage9, stage10;
-        stage1 = findViewById(R.id.stage1);
-        stage2 = findViewById(R.id.stage2);
-        stage3 = findViewById(R.id.stage3);
-        stage4 = findViewById(R.id.stage4);
-        stage5 = findViewById(R.id.stage5);
-        stage6 = findViewById(R.id.stage6);
-        stage7 = findViewById(R.id.stage7);
-        stage8 = findViewById(R.id.stage8);
-        stage9 = findViewById(R.id.stage9);
-        stage10 = findViewById(R.id.stage10);
+        stageButtons = new ArrayList<>();
+        stageButtons.add(stageButton1);
+        stageButtons.add(stageButton2);
+        stageButtons.add(stageButton3);
+        stageButtons.add(stageButton4);
+        stageButtons.add(stageButton5);
+        stageButtons.add(stageButton6);
+        stageButtons.add(stageButton7);
+        stageButtons.add(stageButton8);
+        stageButtons.add(stageButton9);
+        stageButtons.add(stageButton10);
 
-        List<Button> stages = new ArrayList<>();
-        stages.add(stage1);
-        stages.add(stage2);
-        stages.add(stage3);
-        stages.add(stage4);
-        stages.add(stage5);
-        stages.add(stage6);
-        stages.add(stage7);
-        stages.add(stage8);
-        stages.add(stage9);
-        stages.add(stage10);
-
-        for (int i = 0; i < stages.size(); i++) {
+        for (int i = 0; i < stageButtons.size(); i++) {
             final int stageNumber = i + 1;
-            Button stage = stages.get(i);
-            stage.setOnClickListener(new View.OnClickListener() {
+            Button stageButton = stageButtons.get(i);
+            stageButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    intent = new Intent(StageActivity.this, QuizActivity.class);
+                    Intent intent = new Intent(StageActivity.this, QuizActivity.class);
                     intent.putExtra("stageNumber", stageNumber);
                     startActivity(intent);
                 }
             });
         }
 
-        // 현재 스테이지
-        SharedPreferences sharedPreferences = getSharedPreferences("data", MODE_PRIVATE);
-        int stageNumber = sharedPreferences.getInt("stageNumber", 1);
-        Animation scaleAnimation = AnimationUtils.loadAnimation(StageActivity.this, R.anim.scale);
-        Button currentStage = stages.get(stageNumber - 1);
-        currentStage.startAnimation(scaleAnimation);
+        // 현재 스테이지 표시하기
+        sharedPreferences = getSharedPreferences("data", MODE_PRIVATE);
+        scaleAnimation = AnimationUtils.loadAnimation(StageActivity.this, R.anim.stage_button_scale);
+        stageNumber = sharedPreferences.getInt("stageNumber", 1);
+        currentStageButton = stageButtons.get(stageNumber - 1);
+        currentStageButton.startAnimation(scaleAnimation);
 
-        // 다음 스테이지는 진행 불가
-        for (int i = stageNumber; i < stages.size(); i++) {
-            Button stage = stages.get(i);
-            stage.setClickable(false);
-            stage.setAlpha(0.5f);
+        // 다음 스테이지 비활성화
+        for (int i = stageNumber; i < stageButtons.size(); i++) {
+            Button stageButton = stageButtons.get(i);
+            stageButton.setClickable(false);
+            stageButton.setAlpha(0.5f);
         }
+    }
 
-        // 뒤로가기
-        OnBackPressedCallback onBackPressedCallback = new OnBackPressedCallback(true) {
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // 이전 스테이지 애니메이션 삭제하기
+        currentStageButton.clearAnimation();
+
+        // 현재 스테이지 가져와서 애니메이션으로 표시하기
+        stageNumber = sharedPreferences.getInt("stageNumber", 1);
+        currentStageButton = stageButtons.get(stageNumber - 1);
+        currentStageButton.startAnimation(scaleAnimation);
+
+        // 현재 스테이지 버튼 활성화
+        currentStageButton.setClickable(true);
+        currentStageButton.setAlpha(1.0f);
+    }
+
+    private void createToolbar() {
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        TextView titleText = toolbar.findViewById(R.id.titleText);
+        Button closeButton = toolbar.findViewById(R.id.closeButton);
+
+        titleText.setText("스테이지");
+        closeButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void handleOnBackPressed() {
-                intent = new Intent(StageActivity.this, MainActivity.class);
-                startActivity(intent);
+            public void onClick(View v) {
+                finish();
             }
-        };
-        getOnBackPressedDispatcher().addCallback(onBackPressedCallback);
+        });
     }
 }
