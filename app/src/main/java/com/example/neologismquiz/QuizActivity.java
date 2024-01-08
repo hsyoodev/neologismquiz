@@ -24,11 +24,12 @@ public class QuizActivity extends AppCompatActivity {
     private QuizCloseDialog quizCloseDialog;
     private TextView roundText, questionText, answerText;
     private Button oButton, xButton;
+    private DBHelper dbHelper;
     private ArrayDeque<QuizDto> quizDtos;
-    private int roundNumber = 1;
-    private int score = 0;
     private QuizDto quizDto;
     private String randomAnswer;
+    private int roundNumber = 1;
+    private int score = 0;
     private OnBackPressedCallback onBackPressedCallback;
     private OnBackPressedDispatcher onBackPressedDispatcher;
 
@@ -65,6 +66,9 @@ public class QuizActivity extends AppCompatActivity {
         createToolbar();
 
         // 퀴즈 생성
+        dbHelper = new DBHelper(this);
+        quizDtos = dbHelper.findByStageNumber(stageNumber);
+        dbHelper.close();
         createQuiz();
 
         // 애니메이션
@@ -101,9 +105,6 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     private void createQuiz() {
-        DBHelper dbHelper = new DBHelper(this);
-        quizDtos = dbHelper.findByStageNumber(stageNumber);
-        dbHelper.close();
         quizDto = quizDtos.poll();
         String[] randomAnswers = {quizDto.getAnswer(), quizDto.getWrong()};
         Random random = new Random();
