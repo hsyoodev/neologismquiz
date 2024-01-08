@@ -5,6 +5,7 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
         <item name="android:fontFamily">@font/dnfbitbitttf</item>
         <item name="android:windowBackground">@drawable/background</item>
+
     </style>
 
     <style name="Theme.Neologismquiz" parent="Base.Theme.Neologismquiz" />
