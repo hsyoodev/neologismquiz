@@ -10,12 +10,93 @@
 
     <LinearLayout
         android:layout_weight="1"
-        android:gravity="center"
         android:orientation="vertical"
+        android:paddingVertical="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <TextView
+            android:id="@+id/roundText"
+            android:text="ROUND 1"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
+        <TextView
+            android:id="@+id/questionText"
+            android:paddingVertical="10dp"
+            android:text="문제를 작성해주세룡."
+            android:textSize="35sp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <RelativeLayout
+            android:layout_weight="3"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
+            <TextView
+                android:id="@+id/answerText"
+                android:text="정답을 입력해주세룡."
+                android:textSize="20sp"
+                android:gravity="center"
+                android:layout_above="@id/character"
+                android:layout_alignLeft="@id/character"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/pixel_speech_bubble"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:id="@+id/character"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/pixel_dragon"
+                android:layout_width="wrap_content"
+                android:layout_height="120dp" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_weight="2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:paddingHorizontal="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/oButton"
+                    android:text="O"
+                    android:textSize="120sp"
+                    android:gravity="center"
+                    android:background="#00000000"
+                    android:textColor="#2962FF"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:paddingHorizontal="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/xButton"
+                    android:text="X"
+                    android:textSize="120sp"
+                    android:background="#00000000"
+                    android:textColor="#D50000"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 
     <include layout="@layout/bottomappbar" />

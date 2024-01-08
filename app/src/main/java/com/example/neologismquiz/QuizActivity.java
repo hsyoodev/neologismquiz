@@ -1,44 +1,141 @@
 package com.example.neologismquiz;
 
-import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.view.MenuItem;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.activity.OnBackPressedCallback;
+import androidx.activity.OnBackPressedDispatcher;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import java.util.ArrayDeque;
+import java.util.Random;
+
 public class QuizActivity extends AppCompatActivity {
-    Intent intent;
+    private final int TOTAL_ROUND_NUMBER = 5;
+    private final int SCORE_BY_ONE = 20;
+    private Intent intent;
+    private int stageNumber;
+    private QuizCloseDialog quizCloseDialog;
+    private TextView roundText, questionText, answerText;
+    private Button oButton, xButton;
+    private ArrayDeque<QuizDto> quizDtos;
+    private int roundNumber = 1;
+    private int score = 0;
+    private QuizDto quizDto;
+    private String randomAnswer;
+    private OnBackPressedCallback onBackPressedCallback;
+    private OnBackPressedDispatcher onBackPressedDispatcher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
 
-        // StageActivity 가 보내온 데이터 받기
-        intent = getIntent();
-        int stageNumber = intent.getIntExtra("stageNumber", 1);
+        roundText = findViewById(R.id.roundText);
+        questionText = findViewById(R.id.questionText);
+        answerText = findViewById(R.id.answerText);
+        oButton = findViewById(R.id.oButton);
+        xButton = findViewById(R.id.xButton);
 
-        // toolbar
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        TextView title = toolbar.findViewById(R.id.title);
-
-        title.setText("Stage " + stageNumber);
-        toolbar.inflateMenu(R.menu.menu);
-        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+        // OX
+        oButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                if (item.getItemId() == R.id.close) {
-                    Dialog dialog = new Dialog(QuizActivity.this);
-                    dialog.setContentView(R.layout.dialog);
-                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                    dialog.show();
-                }
-                return false;
+            public void onClick(View v) {
+                onClickOX(true);
+            }
+        });
+        xButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickOX(false);
+            }
+        });
+
+        // 현재 스테이지 번호 가져오기
+        intent = getIntent();
+        stageNumber = intent.getIntExtra("stageNumber", 1);
+
+        // 커스텀 툴바
+        createToolbar();
+
+        // 퀴즈 생성
+        createQuiz();
+
+        // 애니메이션
+        startQuizAnimation();
+
+        // 커스텀 대화상자
+        quizCloseDialog = new QuizCloseDialog(this);
+
+        // 뒤로가기
+        onBackPressedDispatcher = getOnBackPressedDispatcher();
+        onBackPressedCallback = new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                quizCloseDialog.show();
+            }
+        };
+        onBackPressedDispatcher.addCallback(onBackPressedCallback);
+    }
+
+    private void onClickOX(boolean isO) {
+        if (isAnswer(isO)) {
+            score += SCORE_BY_ONE;
+        }
+
+        if (roundNumber > TOTAL_ROUND_NUMBER) {
+            intent = new Intent(QuizActivity.this, ResultActivity.class);
+            intent.putExtra("score", score);
+            startActivity(intent);
+            finish();
+        } else {
+            createQuiz();
+            startQuizAnimation();
+        }
+    }
+
+    private void createQuiz() {
+        DBHelper dbHelper = new DBHelper(this);
+        quizDtos = dbHelper.findByStageNumber(stageNumber);
+        dbHelper.close();
+        quizDto = quizDtos.poll();
+        String[] randomAnswers = {quizDto.getAnswer(), quizDto.getWrong()};
+        Random random = new Random();
+        int randomIndex = random.nextInt(randomAnswers.length);
+        randomAnswer = randomAnswers[randomIndex];
+
+        roundText.setText("ROUND " + roundNumber++);
+        questionText.setText(quizDto.getQuestion());
+        answerText.setText(randomAnswer);
+    }
+
+    private void startQuizAnimation() {
+        Animation quizTextScaleAnimation = AnimationUtils.loadAnimation(QuizActivity.this, R.anim.quiz_text_scale);
+        roundText.startAnimation(quizTextScaleAnimation);
+        questionText.startAnimation(quizTextScaleAnimation);
+        answerText.startAnimation(quizTextScaleAnimation);
+    }
+
+    private boolean isAnswer(boolean isO) {
+        return quizDto.getAnswer().equals(randomAnswer) == isO;
+    }
+
+    private void createToolbar() {
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        TextView titleText = toolbar.findViewById(R.id.titleText);
+        Button closeButton = toolbar.findViewById(R.id.closeButton);
+
+        titleText.setText("Stage " + stageNumber);
+        closeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                quizCloseDialog.show();
             }
         });
     }
