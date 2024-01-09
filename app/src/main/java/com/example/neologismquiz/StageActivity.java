@@ -88,14 +88,17 @@ public class StageActivity extends AppCompatActivity {
         // 이전 스테이지 애니메이션 삭제하기
         currentStageButton.clearAnimation();
 
-        // 현재 스테이지 가져와서 애니메이션으로 표시하기
+        // 현재 스테이지 애니메이션 표시
         stageNumber = sharedPreferences.getInt("stageNumber", 1);
         currentStageButton = stageButtons.get(stageNumber - 1);
         currentStageButton.startAnimation(scaleAnimation);
 
-        // 현재 스테이지 버튼 활성화
-        currentStageButton.setClickable(true);
-        currentStageButton.setAlpha(1.0f);
+        // 현재 스테이지까지 버튼 활성화
+        for (int i = 0; i < stageNumber; i++) {
+            Button stageButton = stageButtons.get(i);
+            stageButton.setClickable(true);
+            stageButton.setAlpha(1.0f);
+        }
     }
 
     private void createToolbar() {
