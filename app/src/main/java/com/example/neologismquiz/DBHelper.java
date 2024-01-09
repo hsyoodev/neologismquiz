@@ -17,9 +17,11 @@ import java.util.ArrayDeque;
 
 public class DBHelper extends SQLiteOpenHelper {
     private static final String dbName = "quiz.db";
+    private final Context context;
 
     public DBHelper(Context context) {
         super(context, dbName, null, 1);
+        this.context = context;
 
         if (!isExistDB(context)) { // 앱 처음 실행 (DB 데이터 없음)
             copyDB(context); // DB 데이터 생성 (복사)
@@ -33,7 +35,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        copyDB(context);
     }
 
     public boolean isExistDB(Context context) {
