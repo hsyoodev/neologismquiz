@@ -200,5 +200,5 @@
         </LinearLayout>
     </LinearLayout>
 
-    <include layout="@layout/bottomappbar" />
+    <include layout="@layout/bottombanner" />
 </LinearLayout>

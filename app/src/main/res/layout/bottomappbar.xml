@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.bottomappbar.BottomAppBar xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="BottomAppBar"
-    android:backgroundTint="#0091EA"
-    android:layout_alignParentBottom="true"
-    android:minHeight="176px"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"></com.google.android.material.bottomappbar.BottomAppBar>

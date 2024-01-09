@@ -13,6 +13,12 @@ import androidx.activity.OnBackPressedDispatcher;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+
 import java.util.ArrayDeque;
 import java.util.Random;
 
@@ -32,6 +38,7 @@ public class QuizActivity extends AppCompatActivity {
     private int score = 0;
     private OnBackPressedCallback onBackPressedCallback;
     private OnBackPressedDispatcher onBackPressedDispatcher;
+    private AdView mAdView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +69,9 @@ public class QuizActivity extends AppCompatActivity {
         intent = getIntent();
         stageNumber = intent.getIntExtra("stageNumber", 1);
 
+        // 광고
+        createAdMob();
+        
         // 커스텀 툴바
         createToolbar();
 
@@ -137,5 +147,17 @@ public class QuizActivity extends AppCompatActivity {
                 quizCloseDialog.show();
             }
         });
+    }
+
+    private void createAdMob() {
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
     }
 }

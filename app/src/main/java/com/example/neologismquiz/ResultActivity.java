@@ -14,6 +14,12 @@ import androidx.activity.OnBackPressedCallback;
 import androidx.activity.OnBackPressedDispatcher;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+
 public class ResultActivity extends AppCompatActivity {
     private final int TOTAL_STAGE = 10;
     private SharedPreferences sharedPreferences;
@@ -24,6 +30,7 @@ public class ResultActivity extends AppCompatActivity {
     private Button positiveButton, cancelButton;
     private OnBackPressedCallback onBackPressedCallback;
     private OnBackPressedDispatcher onBackPressedDispatcher;
+    private AdView mAdView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +42,9 @@ public class ResultActivity extends AppCompatActivity {
         resultImage = findViewById(R.id.resultImage);
         positiveButton = findViewById(R.id.positiveButton);
         cancelButton = findViewById(R.id.cancelButton);
+
+        // 광고
+        createAdMob();
 
         // 현재 스테이지 번호 가져오기
         sharedPreferences = getSharedPreferences("data", MODE_PRIVATE);
@@ -96,5 +106,17 @@ public class ResultActivity extends AppCompatActivity {
         // 애니메이션
         Animation tingtingAnimation = AnimationUtils.loadAnimation(this, R.anim.tingting);
         resultImage.startAnimation(tingtingAnimation);
+    }
+
+    private void createAdMob() {
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
     }
 }

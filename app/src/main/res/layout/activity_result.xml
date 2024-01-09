@@ -54,7 +54,7 @@
                 android:text="처음으룡"
                 android:textColor="#ffffff"
                 android:backgroundTint="#0091EA"
-                android:textSize="30sp"
+                android:textSize="35sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
@@ -70,11 +70,11 @@
                 android:text="다시할룡"
                 android:backgroundTint="#D50000"
                 android:textColor="#ffffff"
-                android:textSize="30sp"
+                android:textSize="35sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
     </LinearLayout>
 
-    <include layout="@layout/bottomappbar" />
+    <include layout="@layout/bottombanner" />
 </LinearLayout>
