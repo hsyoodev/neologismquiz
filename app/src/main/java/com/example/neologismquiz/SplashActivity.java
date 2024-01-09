@@ -15,11 +15,14 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
+        // 데이터베이스 생성
+        new DBHelper(this);
+
         TextView firstWordText = findViewById(R.id.firstWordText);
         TextView secondWordText = findViewById(R.id.secondWordText);
 
         String[] appNames = getResources().getString(R.string.app_name).split(" ");
-        
+
         firstWordText.setText(appNames[0]);
         secondWordText.setText(appNames[1]);
 
