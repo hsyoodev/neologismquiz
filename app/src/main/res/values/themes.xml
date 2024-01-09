@@ -1,12 +1,12 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="Base.Theme.Neologismquiz" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.NeologismQuiz" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
         <item name="android:fontFamily">@font/dnfbitbitttf</item>
         <item name="android:windowBackground">@drawable/background</item>
-
+        <item name="android:windowIsTranslucent">true</item>
     </style>
 
-    <style name="Theme.Neologismquiz" parent="Base.Theme.Neologismquiz" />
+    <style name="Theme.NeologismQuiz" parent="Base.Theme.NeologismQuiz" />
 </resources>
