@@ -102,7 +102,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public ArrayDeque<QuizDto> findByStageNumber(int stageNumber) {
         ArrayDeque<QuizDto> quizDtos = new ArrayDeque<>();
         SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT question, answer, wrong FROM question WHERE stage=" + stageNumber, null);
+        Cursor cursor = db.rawQuery("SELECT question, answer, wrong FROM question WHERE stage=" + stageNumber + " ORDER BY RANDOM()", null);
         while (cursor.moveToNext()) {
             String question = cursor.getString(0);
             String answer = cursor.getString(1);
