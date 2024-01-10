@@ -3,14 +3,14 @@ plugins {
 }
 
 android {
-    namespace = "com.example.neologismquiz"
+    namespace = "com.hsyoodev.neologismquiz"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.neologismquiz"
+        applicationId = "com.hsyoodev.neologismquiz"
         minSdk = 24
         targetSdk = 33
-        versionCode = 1
+        versionCode = 3
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"

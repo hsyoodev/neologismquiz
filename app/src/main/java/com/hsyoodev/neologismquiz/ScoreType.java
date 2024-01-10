@@ -1,4 +1,4 @@
-package com.example.neologismquiz;
+package com.hsyoodev.neologismquiz;
 
 public enum ScoreType {
     ZERO(0),

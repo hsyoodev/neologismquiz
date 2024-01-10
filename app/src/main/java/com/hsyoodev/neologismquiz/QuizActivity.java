@@ -1,4 +1,4 @@
-package com.example.neologismquiz;
+package com.hsyoodev.neologismquiz;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -71,7 +71,7 @@ public class QuizActivity extends AppCompatActivity {
 
         // 광고
         createAdMob();
-        
+
         // 커스텀 툴바
         createToolbar();
 

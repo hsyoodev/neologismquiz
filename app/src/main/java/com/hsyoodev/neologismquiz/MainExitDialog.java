@@ -1,4 +1,4 @@
-package com.example.neologismquiz;
+package com.hsyoodev.neologismquiz;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -35,7 +35,7 @@ public class MainExitDialog extends Dialog {
         positiveButton = findViewById(R.id.positiveButton);
         cancelButton = findViewById(R.id.cancelButton);
         messageText = findViewById(R.id.messageText);
-        
+
         positiveButton.setText("취소다룡");
         cancelButton.setText("종료다룡");
         messageText.setText("앱을 종료할거다룡?");

@@ -1,4 +1,4 @@
-package com.example.neologismquiz;
+package com.hsyoodev.neologismquiz;
 
 import android.app.Activity;
 import android.app.Dialog;

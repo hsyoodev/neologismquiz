@@ -1,4 +1,4 @@
-package com.example.neologismquiz;
+package com.hsyoodev.neologismquiz;
 
 public class QuizDto {
     private final String question;
