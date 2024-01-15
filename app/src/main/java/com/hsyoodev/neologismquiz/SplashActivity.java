@@ -21,11 +21,6 @@ public class SplashActivity extends AppCompatActivity {
         TextView firstWordText = findViewById(R.id.firstWordText);
         TextView secondWordText = findViewById(R.id.secondWordText);
 
-        String[] appNames = getResources().getString(R.string.app_name).split(" ");
-
-        firstWordText.setText(appNames[0]);
-        secondWordText.setText(appNames[1]);
-
         // 애니메이션
         Animation.AnimationListener animationListener = new Animation.AnimationListener() {
             @Override

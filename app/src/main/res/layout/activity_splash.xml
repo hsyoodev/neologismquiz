@@ -11,6 +11,7 @@
         android:textSize="70dp"
         android:textColor="#FF1744"
         android:gravity="center"
+        android:text="신조어"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
@@ -19,6 +20,7 @@
         android:textSize="70dp"
         android:textColor="#FF1744"
         android:gravity="center"
+        android:text="퀴즈"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 </LinearLayout>

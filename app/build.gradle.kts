@@ -10,7 +10,7 @@ android {
         applicationId = "com.hsyoodev.neologismquiz"
         minSdk = 24
         targetSdk = 33
-        versionCode = 1
+        versionCode = 4
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
