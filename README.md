@@ -22,4 +22,4 @@ Demo👉 https://play.google.com/store/apps/details?id=com.hsyoodev.neologismqui
 
 | 퀴즈 | 결과 |
 | :---: | :---: |
-| ![quiz](https://github.com/hsyoodev/neologismquiz/assets/102946491/9a710557-0fc1-4546-ba51-234c7b220f77) | ![result](https://github.com/hsyoodev/neologismquiz/assets/102946491/53b14a86-ebe9-4543-aefb-33950832cc2e) |
+| ![quiz](https://github.com/hsyoodev/neologismquiz/assets/102946491/6fb3ae71-4b6f-4bc5-a1d8-714dce451454) | ![result](https://github.com/hsyoodev/neologismquiz/assets/102946491/53b14a86-ebe9-4543-aefb-33950832cc2e) |
