@@ -4,7 +4,7 @@
 
 ![neologismquiz](https://github.com/hsyoodev/neologismquiz/assets/102946491/c7b621f5-3806-4134-afdf-c0a526c26cdd)
 
-Demo👉 https://play.google.com/store/apps/details?id=com.hsyoodev.neologismquiz
+Demo👉 https://play.google.com/store/apps/details?id=com.hsyoodev.neologismquiz&hl=ko-KR
 
 ## ⛏️ 개발 환경
 
