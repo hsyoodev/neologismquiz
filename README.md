@@ -1,6 +1,6 @@
 # ❓ Neologism Quiz
 
-[신조어](https://namu.wiki/w/%EC%8B%A0%EC%A1%B0%EC%96%B4) 퀴즈 앱 서비스입니다.
+[신조어](https://namu.wiki/w/%EC%8B%A0%EC%A1%B0%EC%96%B4) 퀴즈 서비스입니다.
 
 ![neologismquiz](https://github.com/hsyoodev/neologismquiz/assets/102946491/c7b621f5-3806-4134-afdf-c0a526c26cdd)
 
